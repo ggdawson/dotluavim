@@ -31,12 +31,12 @@ require('lazy').setup({
   require 'kickstart/plugins/gitsigns',
   require 'kickstart/plugins/which-key',
   require 'kickstart/plugins/telescope',
-  require 'kickstart/plugins/lspconfig',
+  -- require 'kickstart/plugins/lspconfig',
   require 'kickstart/plugins/conform',
-  require 'kickstart/plugins/cmp',
+  -- require 'kickstart/plugins/cmp',
   -- require 'kickstart/plugins/tokyonight',
   require 'kickstart/plugins/todo-comments',
-  require 'kickstart/plugins/mini',
+  -- require 'kickstart/plugins/mini',
   require 'kickstart/plugins/treesitter',
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
@@ -54,16 +54,23 @@ require('lazy').setup({
   -- require 'kickstart.plugins.neo-tree',
 
   require 'killtheliterate.plugins.base16',
+  require 'killtheliterate.plugins.cmp',
+  -- require 'killtheliterate.plugins.conform',
   require 'killtheliterate.plugins.copilot',
   require 'killtheliterate.plugins.dirvish',
   require 'killtheliterate.plugins.indent_line',
+  require 'killtheliterate.plugins.inspect',
+  require 'killtheliterate.plugins.leap',
+  require 'killtheliterate.plugins.lspconfig',
+  require 'killtheliterate.plugins.mini',
+  require 'killtheliterate.plugins.null_ls',
   require 'killtheliterate.plugins.reveal',
   require 'killtheliterate.plugins.trouble',
 
   'myusuf3/numbers.vim',
   'tpope/vim-eunuch',
   'tpope/vim-repeat',
-  -- "tpope/vim-surround",
+  'tpope/vim-surround',
   'tribela/vim-transparent',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`

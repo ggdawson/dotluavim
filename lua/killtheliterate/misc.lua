@@ -30,7 +30,36 @@ vim.diagnostic.config {
 local signs = { Error = '✗', Warn = '⚠', Hint = '➤', Info = 'i' }
 for type, icon in pairs(signs) do
   local hl = 'DiagnosticSign' .. type
+  -- vim.diagnostic.handlers.sign(hl, { text = icon, texthl = hl, numhl = hl })
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+function PrintLspHandlersDetails()
+  for name, handler in pairs(vim.lsp.handlers) do
+    print('Handler name: ' .. name)
+    local info = debug.getinfo(handler)
+    for key, value in pairs(info) do
+      print(key .. ': ' .. tostring(value))
+    end
+    if type(handler) == 'function' then
+      local source = debug.getinfo(handler).source
+      if source:sub(1, 1) == '@' then
+        local file = io.open(source:sub(2), 'r')
+        if file then
+          local lines = file:read '*all'
+          file:close()
+          print('Source code:\n' .. lines)
+        end
+      else
+        print 'Handler is a built-in or embedded function.'
+      end
+    else
+      print 'Handler is not a Lua function.'
+    end
+    print '-----------'
+  end
+end
+
+vim.api.nvim_set_keymap('n', '<leader>lh', ':lua PrintLspHandlersDetails()<CR>', { noremap = true, silent = true })
 
 -- vim: ts=2 sts=2 sw=2 et
